@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="style.css" rel="stylesheet"/>
+    <title>Day 1</title>
+</head>
+<body>
+    <div class="flex w-full justify-center items-center flex-col gap-4 py-8">   
+         <h1 class="text-center text-2xl max-w-2xl">Create a simple image gallery with previous and next buttons. when clicking these
+buttons, we see different images</h1>
+
+    <div class="img-carousel relative py-8 w-80 mx-auto h-80">
+    <div class="carousel-image-inner h-80 mx-auto w-full">
+      <img src="image/image1.png" class="w-full hidden h-full" alt="Image1" title="Image1" />
+      <img src="image/image2.png" class="w-full hidden h-full" alt="Image2" title="Image2" />
+      <img src="image/image3.png" class="w-full hidden h-full" alt="Image3" title="Image3" />
+      <img src="image/image4.png" class="w-full hidden h-full" alt="Image4" title="Image4" />
+    </div>
+         <div class="controls absolute top-[50%] w-full flex justify-between px-4 -translate-y-1/2">
+      <button id="prev-button" class="absolute left-4 bg-white text-gray-800 !p-2 rounded">Prev</button>
+      <button id="next-button" class="absolute right-4 bg-white text-gray-800 !p-2 rounded">Next</button>
+    </div>
+    </div></div>
+
+    <script>
+        const images = document.querySelectorAll(".carousel-image-inner img");
+        const prev = document.getElementById("prev-button");
+        const next = document.getElementById("next-button");
+        let currentIndex = 0;
+        function showImage(index){
+            images.forEach((img,i) => {
+                img.classList.add("hidden");
+                if(i === index){img.classList.remove("hidden")} //index is equal to image - hidden needs to remove and it will be displayed
+
+            });
+        }
+        prev.addEventListener("click",() => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length; //if currenIndex is 1 (1-1+4)%4 = 1 (first image)
+            showImage(currentIndex);
+        })
+        next.addEventListener("click",() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        })
+        //first image
+showImage(currentIndex);
+    </script>
+</body>
+</html>

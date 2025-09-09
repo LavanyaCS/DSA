@@ -26,13 +26,14 @@ buttons, we see different images</h1>
     </div></div>
 
     <script>
-        const images = document.querySelectorAll(".carousel-image-inner img");
-        const prev = document.getElementById("prev-button");
-        const next = document.getElementById("next-button");
-        let currentIndex = 0;
+        const images = document.querySelectorAll(".carousel-image-inner img"); //Image all
+        const prev = document.getElementById("prev-button"); // Prev Btn
+        const next = document.getElementById("next-button"); // Next Btn
+        let currentIndex = 0; //Current index of image is 0 (image1)
         function showImage(index){
             images.forEach((img,i) => {
-                img.classList.add("hidden");
+                img.classList.add("hidden"); //for all images add class hidden
+                //index and image is same then remove hidden class
                 if(i === index){img.classList.remove("hidden")} //index is equal to image - hidden needs to remove and it will be displayed
 
             });
